@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <title>Contact - Habibi Tacos | Get in Touch Seattle</title>
+    <meta name="description" content="Contact Habibi Tacos for questions, bookings, or just to say hello! Find us on Instagram, email us, or fill out our contact form.">
+    <link rel="icon" type="image/png" href="assets/logos/habibitacos.png">
+    <meta property="og:image" content="assets/logos/habibitacos.png">
+    <meta property="og:title" content="Contact - Habibi Tacos | Get in Touch Seattle">
+    <meta property="og:description" content="Contact Habibi Tacos for questions, bookings, or just to say hello! Find us on Instagram, email us, or fill out our contact form.">
+      <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-green: #00C264;
+            --accent-red: #E5272D;
+            --warm-yellow: #FCD043;
+            --sand-beige: #D6A14D;
+            --dark-neutral: #222222;
+            --white: #FFFFFF;
+            --light-gray: #F8F9FA;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }        body {
+            font-family: 'Fredoka', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-neutral);
+            padding-top: 60px;
+        }
+
+        /* Navigation Styles */        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+        }
+
+        .navbar.scrolled .logo img {
+            width: 80px;
+            height: 80px;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }        .logo {
+            font-family: 'Fredoka', cursive;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }        .logo img {
+            width: 180px;
+            height: 180px;
+            object-fit: contain;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-neutral);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-green);
+            background: rgba(0, 194, 100, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .nav-links a:hover::after {
+            content: '🌮';
+            position: absolute;
+            right: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+            animation: taco-bounce 0.6s ease;
+        }
+
+        @keyframes taco-bounce {
+            0%, 20%, 60%, 100% { transform: translateY(-50%); }
+            40% { transform: translateY(-70%); }
+            80% { transform: translateY(-60%); }
+        }
+
+        .nav-links a.active {
+            color: var(--primary-green);
+            background: rgba(0, 194, 100, 0.1);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-green);
+            cursor: pointer;
+        }
+
+        /* Header */
+        .contact-header {
+            background: linear-gradient(135deg, var(--warm-yellow) 0%, #e6c23d 100%);
+            color: white;
+            padding: 14rem 0 6rem;
+            text-align: center;
+        }        .contact-header h1 {
+            font-family: 'Fredoka', cursive;
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--dark-neutral);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            letter-spacing: -0.01em;
+        }
+
+        .contact-header p {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            color: var(--dark-neutral);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            padding: 4rem 0;
+        }
+
+        /* Contact Methods */
+        .contact-methods {
+            background: var(--light-gray);
+        }
+
+        .methods-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .method-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+        }
+
+        .method-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .method-card:nth-child(1):hover { border-color: var(--accent-red); }
+        .method-card:nth-child(2):hover { border-color: var(--primary-green); }
+        .method-card:nth-child(3):hover { border-color: var(--sand-beige); }
+
+        .method-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .method-card:nth-child(1) .method-icon { color: var(--accent-red); }
+        .method-card:nth-child(2) .method-icon { color: var(--primary-green); }
+        .method-card:nth-child(3) .method-icon { color: var(--sand-beige); }
+
+        .method-card h3 {
+            font-family: 'Fredoka', cursive;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark-neutral);
+        }
+
+        .method-card a {
+            color: var(--primary-green);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .method-card a:hover {
+            color: var(--accent-red);
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background: white;
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--light-gray);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--dark-neutral);
+        }
+
+        input, select, textarea {
+            padding: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 3px rgba(0, 194, 100, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            background: var(--primary-green);
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 194, 100, 0.3);
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background: #00a855;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 194, 100, 0.4);
+        }
+
+        /* Map Section */
+        .map-section {
+            background: var(--light-gray);
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: 'Fredoka', cursive;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--dark-neutral);
+        }
+
+        .map-placeholder {
+            max-width: 800px;
+            margin: 0 auto;
+            height: 400px;
+            background: linear-gradient(135deg, var(--primary-green), var(--sand-beige));
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .map-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Social Links */
+        .social-section {
+            background: white;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: var(--dark-neutral);
+            transition: all 0.3s ease;
+            padding: 2rem;
+            border-radius: 20px;
+            background: var(--light-gray);
+            min-width: 200px;
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-link:nth-child(1):hover { 
+            background: linear-gradient(135deg, #E1306C, #F56040);
+            color: white;
+        }
+
+        .social-link:nth-child(2):hover { 
+            background: var(--primary-green);
+            color: white;
+        }
+
+        .social-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-text {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark-neutral);
+            color: white;
+            padding: 3rem 0 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer h3 {
+            font-family: 'Fredoka', cursive;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-green);
+        }
+
+        .footer-links {
+            margin-bottom: 2rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-green);
+        }
+
+        .footer-tagline {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1rem;
+            margin-top: 2rem;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }            .contact-header h1 {
+                font-size: 2.8rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .methods-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-container {
+                padding: 2rem;
+            }
+
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .social-link {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">            <a href="index.html" class="logo">
+                <img src="assets/logos/habibitacos.png" alt="Habibi Tacos Logo">
+            </a><ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="catering.html">Catering</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <section class="contact-header">
+        <div class="container">
+            <h1>Get in Touch</h1>
+            <p>We'd love to hear from you! Questions, bookings, or just saying hello</p>
+        </div>
+    </section>
+
+    <!-- Contact Methods -->
+    <section class="contact-methods section">
+        <div class="container">
+            <h2 class="section-title">How to Reach Us</h2>
+            <div class="methods-grid">
+                <div class="method-card">
+                    <div class="method-icon">📧</div>
+                    <h3>Email Us</h3>
+                    <p>For bookings, questions, or menu requests</p>
+                    <a href="mailto:habibi.tacoswa@gmail.com">habibi.tacoswa@gmail.com</a>
+                </div>
+                
+                <div class="method-card">
+                    <div class="method-icon">📱</div>
+                    <h3>Instagram DM</h3>
+                    <p>Quick questions and event updates</p>
+                    <a href="https://www.instagram.com/habibi.tacoswa/" target="_blank">@habibi.tacoswa</a>
+                </div>
+                
+                <div class="method-card">
+                    <div class="method-icon">📍</div>
+                    <h3>Find Us</h3>
+                    <p>Follow our pop-up locations</p>
+                    <a href="about.html">Check About Page</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="contact-form section">
+        <div class="container">
+            <h2 class="section-title">Send Us a Message</h2>
+            <div class="form-container">
+                <form action="mailto:habibi.tacoswa@gmail.com" method="post" enctype="text/plain">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="name">Your Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label for="subject">Subject</label>
+                            <select id="subject" name="subject">
+                                <option value="">Select a topic...</option>
+                                <option value="general">General Question</option>
+                                <option value="catering">Catering Inquiry</option>
+                                <option value="events">Event Information</option>
+                                <option value="menu">Menu Question</option>
+                                <option value="partnership">Partnership Opportunity</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label for="message">Your Message *</label>
+                            <textarea id="message" name="message" placeholder="Tell us what's on your mind..." required></textarea>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Send Message 🚀</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Links -->
+    <section class="social-section section">
+        <div class="container">
+            <h2 class="section-title">Connect With Us</h2>
+            <div class="social-links">
+                <a href="https://www.instagram.com/habibi.tacoswa/" target="_blank" class="social-link">
+                    <div class="social-icon">📸</div>
+                    <div class="social-text">Follow on Instagram</div>
+                    <div style="font-size: 0.9rem; opacity: 0.8; margin-top: 0.5rem;">@habibi.tacoswa</div>
+                </a>
+                
+                <a href="index.html" class="social-link">
+                    <div class="social-icon">🌐</div>
+                    <div class="social-text">Visit Our Website</div>
+                    <div style="font-size: 0.9rem; opacity: 0.8; margin-top: 0.5rem;">habibitacos.com</div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <h3>🌮 Stay Connected 🐪</h3>
+                <div class="footer-links">                    <a href="mailto:habibi.tacoswa@gmail.com">📧 habibi.tacoswa@gmail.com</a>
+                    <a href="https://www.instagram.com/habibi.tacoswa/" target="_blank">📱 Instagram</a>
+                    <a href="http://habibitacos.co/">🌐 Website</a>
+                </div>
+                <p class="footer-tagline">Made with 🌮 + 🐪 in Seattle</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Form enhancement
+        const form = document.querySelector('form');
+        form.addEventListener('submit', (e) => {
+            // Create a formatted email body
+            const formData = new FormData(form);
+            let emailBody = 'Contact Form Message from Habibi Tacos Website:\n\n';
+            
+            for (let [key, value] of formData.entries()) {
+                if (value) {
+                    emailBody += `${key.replace(/\b\w/g, l => l.toUpperCase())}: ${value}\n`;
+                }
+            }            // Update the mailto link
+            const mailtoLink = `mailto:habibi.tacoswa@gmail.com?subject=Website Contact Form&body=${encodeURIComponent(emailBody)}`;
+            window.location.href = mailtoLink;
+            
+            e.preventDefault();
+        });
+
+        // Contact method card hover effects
+        const methodCards = document.querySelectorAll('.method-card');
+        methodCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(-10px) scale(1)';
+            });        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
