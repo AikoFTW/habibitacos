@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habibi Tacos - Halal Mexican-Arab Fusion | Seattle</title>
+    <meta name="description"
+        content="Habibi Tacos serves authentic Halal Mexican-Arab fusion dishes straight outta Seattle. Pop-up events, catering, and custom orders available.">
+    <meta name="keywords" content="halal tacos, mexican arab fusion, seattle food, pop-up events, catering">
+    <link rel="icon" type="image/png" href="assets/logos/habibitacos.png">
+    <meta property="og:image" content="assets/logos/habibitacos.png">
+    <meta property="og:title" content="Habibi Tacos - Halal Mexican-Arab Fusion | Seattle">
+    <meta property="og:description" content="Authentic Halal Mexican-Arab fusion dishes straight outta Seattle">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-green: #00C264;
+            --accent-red: #E5272D;
+            --warm-yellow: #FCD043;
+            --sand-beige: #D6A14D;
+            --dark-neutral: #222222;
+            --white: #FFFFFF;
+            --light-gray: #F8F9FA;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Fredoka', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-neutral);
+            overflow-x: hidden;
+            padding-top: 100px;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+        }
+
+        .navbar.scrolled .logo img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: 'Fredoka', cursive;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+
+        .logo img {
+            width: 180px;
+            height: 180px;
+            object-fit: contain;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-neutral);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-green);
+            background: rgba(0, 194, 100, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .nav-links a:hover::after {
+            content: '🌮';
+            position: absolute;
+            right: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+            animation: taco-bounce 0.6s ease;
+        }
+
+        @keyframes taco-bounce {
+
+            0%,
+            20%,
+            60%,
+            100% {
+                transform: translateY(-50%);
+            }
+
+            40% {
+                transform: translateY(-70%);
+            }
+
+            80% {
+                transform: translateY(-60%);
+            }
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-green);
+            cursor: pointer;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--primary-green) 0%, #00a855 100%);
+            color: white;
+            padding: 200px 0 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="70" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="90" cy="90" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-family: 'Fredoka', cursive;
+            font-size: 5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            letter-spacing: -0.02em;
+        }
+
+        .hero .tagline {
+            font-size: 1.8rem;
+            margin-bottom: 2.5rem;
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-red);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(229, 39, 45, 0.3);
+        }
+
+        .cta-button:hover {
+            background: #c41e24;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(229, 39, 45, 0.4);
+        }
+
+        .section {
+            padding: 60px 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: 'Fredoka', cursive;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: var(--dark-neutral);
+        }
+
+        .section-title.green {
+            color: var(--primary-green);
+        }
+
+        .events-carousel {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .carousel-container {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, var(--primary-green), var(--sand-beige));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--primary-green);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+            display: none;
+        }
+
+        .carousel-arrow:hover {
+            background: white;
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .carousel-arrow.left {
+            left: 15px;
+        }
+
+        .carousel-arrow.right {
+            right: 15px;
+        }
+
+        .carousel-arrow.show {
+            display: block;
+        }
+
+        .carousel-slide:nth-child(2) {
+            background: linear-gradient(135deg, var(--accent-red), var(--warm-yellow));
+        }
+
+        .carousel-slide:nth-child(3) {
+            background: linear-gradient(135deg, var(--sand-beige), var(--primary-green));
+        }
+
+        .carousel-nav {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-dot.active {
+            background: white;
+            transform: scale(1.2);
+        }
+
+        .instagram {
+            background: var(--light-gray);
+        }
+
+        .instagram-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .instagram-post {
+            aspect-ratio: 1;
+            background: linear-gradient(45deg, var(--primary-green), var(--accent-red));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .instagram-post:hover {
+            transform: scale(1.05);
+        }
+
+        .footer {
+            background: var(--dark-neutral);
+            color: white;
+            padding: 3rem 0 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer h3 {
+            font-family: 'Fredoka', cursive;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-green);
+        }
+
+        .footer-links {
+            margin-bottom: 2rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-green);
+        }
+
+        .footer-tagline {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1rem;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .hero .tagline {
+                font-size: 1.4rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .instagram-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <%- include('partials/navbar') %>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Habibi Tacos</h1>
+                <p class="tagline">Halal Mexican-Arab fusion based in Seattle.</p>
+                <a href="about.html" class="cta-button">Learn More</a>
+            </div>
+        </section> <!-- Events Carousel -->        <section class="events section">
+            <div class="container">
+                <h2 class="section-title">Upcoming Events</h2>
+                <div class="events-carousel">
+                    <% if (events && events.length > 0) { %>
+                        <button class="carousel-arrow left" id="prevBtn">‹</button>
+                        <button class="carousel-arrow right" id="nextBtn">›</button>
+                        <div class="carousel-container">
+                            <% events.forEach((event, index) => { %>
+                                <div class="carousel-slide<%= index === 0 ? ' active' : '' %>">
+                                    <div>
+                                        <h3><%= event.title %></h3>
+                                        <p><%= new Date(event.date).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' }) %> • <%= new Date(`2000-01-01T${event.time}`).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true }) %></p>
+                                        <p><%= event.description %></p>
+                                    </div>
+                                </div>
+                            <% }) %>
+                        </div>
+                        <div class="carousel-nav">
+                            <% events.forEach((event, index) => { %>
+                                <span class="carousel-dot<%= index === 0 ? ' active' : '' %>"></span>
+                            <% }) %>
+                        </div>
+                    <% } else { %>
+                        <div style="text-align: center; padding: 40px;">
+                            <p style="color: #666; font-size: 18px;">No upcoming events scheduled at the moment.</p>
+                            <p style="color: #666; margin-top: 10px;">Check back soon for exciting updates!</p>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+        </section><!-- Instagram Section -->
+        <section class="instagram section">
+            <div class="container">
+                <h2 class="section-title">Follow Our Journey</h2>
+                <p style="text-align: center; margin-bottom: 2rem;">
+                    <a href="https://www.instagram.com/habibi.tacoswa/" target="_blank"
+                        style="color: var(--primary-green); text-decoration: none; font-weight: 600; font-size: 1.1rem;">
+                        📸 @habibi.tacoswa
+                    </a>
+                </p>
+                <div class="instagram-embed-container">
+                    <script async src="//www.instagram.com/embed.js"></script>
+                    <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem;">
+                        <!-- Instagram embed will automatically show latest posts -->
+                        <blockquote class="instagram-media"
+                            data-instgrm-permalink="https://www.instagram.com/habibi.tacoswa/?utm_source=ig_embed&amp;utm_campaign=loading"
+                            data-instgrm-version="14"
+                            style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:400px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+                            <div style="padding:16px;">
+                                <a href="https://www.instagram.com/habibi.tacoswa/?utm_source=ig_embed&amp;utm_campaign=loading"
+                                    style="background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;"
+                                    target="_blank">
+                                    <div style="display: flex; flex-direction: row; align-items: center;">
+                                        <div
+                                            style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;">
+                                        </div>
+                                        <div
+                                            style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;">
+                                            <div
+                                                style="background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;">
+                                            </div>
+                                            <div
+                                                style="background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="padding: 19% 0;"></div>
+                                    <div style="display:block; height:50px; margin:0 auto 12px; width:50px;">
+                                        <svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1"
+                                            xmlns="https://www.w3.org/2000/svg"
+                                            xmlns:xlink="https://www.w3.org/1999/xlink">
+                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <g transform="translate(-511.000000, -20.000000)" fill="#000000">
+                                                    <g>
+                                                        <path
+                                                            d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631">
+                                                        </path>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                    <div style="padding-top: 8px;">
+                                        <div
+                                            style="color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">
+                                            View this profile on Instagram</div>
+                                    </div>
+                                    <div style="padding: 12.5% 0;"></div>
+                                </a>
+                                <p
+                                    style="color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">
+                                    <a href="https://www.instagram.com/habibi.tacoswa/?utm_source=ig_embed&amp;utm_campaign=loading"
+                                        style="color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;"
+                                        target="_blank">Habibi Tacos (@habibi.tacoswa)</a> • Photos and videos
+                                </p>
+                            </div>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <%- include('partials/footer') %>
+
+            <script>
+                const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+                const navLinks = document.querySelector('.nav-links');
+
+                mobileMenuBtn.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                });        const carousel = document.querySelector('.carousel-container');
+                const dots = document.querySelectorAll('.carousel-dot');
+                const prevBtn = document.getElementById('prevBtn');
+                const nextBtn = document.getElementById('nextBtn');
+                const slides = document.querySelectorAll('.carousel-slide');
+                let currentSlide = 0;
+                let autoAdvanceInterval;
+
+                if (slides.length > 1) {
+                    prevBtn.classList.add('show');
+                    nextBtn.classList.add('show');
+                }
+
+                function showSlide(index) {
+                    carousel.style.transform = `translateX(-${index * 100}%)`;
+                    dots.forEach((dot, i) => {
+                        dot.classList.toggle('active', i === index);
+                    });
+                }
+
+                function nextSlide() {
+                    currentSlide = (currentSlide + 1) % slides.length;
+                    showSlide(currentSlide);
+                }
+
+                function prevSlide() {
+                    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                    showSlide(currentSlide);
+                }
+
+                function startAutoAdvance() {
+                    if (slides.length > 1) {
+                        autoAdvanceInterval = setInterval(nextSlide, 8000);
+                    }
+                }
+
+                function stopAutoAdvance() {
+                    clearInterval(autoAdvanceInterval);
+                }
+
+                nextBtn.addEventListener('click', () => {
+                    stopAutoAdvance();
+                    nextSlide();
+                    startAutoAdvance();
+                });
+
+                prevBtn.addEventListener('click', () => {
+                    stopAutoAdvance();
+                    prevSlide();
+                    startAutoAdvance();
+                });
+
+                dots.forEach((dot, index) => {
+                    dot.addEventListener('click', () => {
+                        stopAutoAdvance();
+                        currentSlide = index;
+                        showSlide(currentSlide);
+                        startAutoAdvance();
+                    });
+                });
+
+                startAutoAdvance();        window.addEventListener('scroll', () => {
+                    const navbar = document.querySelector('.navbar');
+                    if (window.scrollY > 100) {
+                        navbar.classList.add('scrolled');
+                    } else {
+                        navbar.classList.remove('scrolled');
+                    }
+                });
+            </script>
+</body>
+
+</html>

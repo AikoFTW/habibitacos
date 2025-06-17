@@ -1,0 +1,27 @@
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <h3>
+                🌮 Stay Connected 🐪
+            </h3>
+            <div class="footer-links">
+                <a onclick="copyToClipboard('habibi.tacoswa@gmail.com')">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://www.instagram.com/habibi.tacoswa/" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+            <p class="footer-tagline">Made with 🌮 + 🐪 in Seattle</p>
+        </div>
+    </div>
+</footer>
+<script>
+    function copyToClipboard(text) {
+        navigator.clipboard.writeText(text).then(() => {
+            alert('Email address copied to clipboard!');
+        }).catch(err => {
+            console.error('Failed to copy: ', err);
+        });
+    }
+</script>

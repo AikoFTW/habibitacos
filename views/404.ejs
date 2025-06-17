@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Lost in the Desert? | Habibi Tacos</title>
+    <meta name="description"
+        content="Oops! Looks like you've wandered into the desert. Let's get you back to some delicious halal fusion tacos!">
+    <link rel="icon" type="image/png" href="assets/logos/habibitacos.png">
+    <meta property="og:image" content="assets/logos/habibitacos.png">
+    <meta property="og:title" content="404 - Lost in the Desert? | Habibi Tacos">
+    <meta property="og:description"
+        content="Oops! Looks like you've wandered into the desert. Let's get you back to some delicious halal fusion tacos!">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-green: #00C264;
+            --accent-red: #E5272D;
+            --warm-yellow: #FCD043;
+            --sand-beige: #D6A14D;
+            --dark-neutral: #222222;
+            --white: #FFFFFF;
+            --light-gray: #F8F9FA;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Fredoka', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-neutral);
+            background: linear-gradient(135deg, var(--sand-beige) 0%, var(--warm-yellow) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="sand" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="15" cy="10" r="0.5" fill="rgba(255,255,255,0.1)"/><circle cx="8" cy="15" r="0.8" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23sand)"/></svg>');
+            opacity: 0.3;
+            animation: sandShift 20s linear infinite;
+        }
+
+        @keyframes sandShift {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(20px);
+            }
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+        }
+
+        .navbar.scrolled .logo img {
+            width: 80px;
+            height: 80px;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: 'Fredoka', cursive;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+
+        .logo img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+        }
+
+        .logo img {
+            width: 180px;
+            height: 180px;
+            object-fit: contain;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-neutral);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-green);
+            background: rgba(0, 194, 100, 0.1);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-green);
+            cursor: pointer;
+        }
+
+        .error-container {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .error-number {
+            font-family: 'Fredoka', cursive;
+            font-size: 8rem;
+            font-weight: 700;
+            color: var(--accent-red);
+            text-shadow: 0 4px 8px rgba(229, 39, 45, 0.3);
+            margin-bottom: 1rem;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            60%,
+            100% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(-20px);
+            }
+
+            80% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .error-title {
+            font-family: 'Fredoka', cursive;
+            font-size: 2.5rem;
+            color: var(--dark-neutral);
+            margin-bottom: 1rem;
+        }
+
+        .error-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .camel-graphic {
+            font-size: 6rem;
+            margin: 2rem 0;
+            animation: camelWalk 3s ease-in-out infinite;
+        }
+
+        @keyframes camelWalk {
+
+            0%,
+            100% {
+                transform: translateX(0) rotate(0deg);
+            }
+
+            25% {
+                transform: translateX(-10px) rotate(-2deg);
+            }
+
+            75% {
+                transform: translateX(10px) rotate(2deg);
+            }
+        }
+
+        .home-button {
+            display: inline-block;
+            background: var(--primary-green);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 194, 100, 0.3);
+            margin: 1rem 0.5rem;
+        }
+
+        .home-button:hover {
+            background: #00a855;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 194, 100, 0.4);
+        }
+
+        .secondary-button {
+            display: inline-block;
+            background: transparent;
+            color: var(--accent-red);
+            padding: 1rem 2.5rem;
+            border: 2px solid var(--accent-red);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            margin: 1rem 0.5rem;
+        }
+
+        .secondary-button:hover {
+            background: var(--accent-red);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .desert-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .cactus {
+            position: absolute;
+            font-size: 3rem;
+            animation: sway 4s ease-in-out infinite;
+        }
+
+        .cactus:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .cactus:nth-child(2) {
+            top: 60%;
+            right: 15%;
+            animation-delay: 1s;
+        }
+
+        .cactus:nth-child(3) {
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 2s;
+        }
+
+        @keyframes sway {
+
+            0%,
+            100% {
+                transform: rotate(0deg);
+            }
+
+            50% {
+                transform: rotate(3deg);
+            }
+        }
+
+        .sun {
+            position: absolute;
+            top: 10%;
+            right: 10%;
+            font-size: 4rem;
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+
+            0%,
+            100% {
+                transform: scale(1);
+                filter: brightness(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+                filter: brightness(1.2);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .error-number {
+                font-size: 6rem;
+            }
+
+            .error-title {
+                font-size: 2rem;
+            }
+
+            .error-subtitle {
+                font-size: 1rem;
+            }
+
+            .camel-graphic {
+                font-size: 4rem;
+            }
+
+            .home-button,
+            .secondary-button {
+                display: block;
+                margin: 1rem auto;
+                width: fit-content;
+            }
+
+            .cactus {
+                font-size: 2rem;
+            }
+
+            .sun {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <%- include('partials/navbar') %>
+
+
+        <div class="desert-elements">
+            <div class="cactus">🌵</div>
+            <div class="cactus">🌵</div>
+            <div class="cactus">🌵</div>
+            <div class="sun">☀️</div>
+        </div>
+
+        <div class="error-container">
+            <div class="error-number">404</div>
+            <h1 class="error-title">Lost in the Desert? 🏜️</h1>
+            <p class="error-subtitle">
+                Looks like you've wandered off the beaten path!<br>
+                Don't worry, even our trusty camel got a bit confused.
+            </p>
+
+            <div class="camel-graphic">🐪</div>
+
+            <p class="error-subtitle">
+                Let's get you back to civilization (and some amazing tacos)!
+            </p>
+
+            <a href="index.html" class="home-button">🏠 Back to Home</a>
+            <a href="about.html" class="secondary-button">� Learn About Us</a>
+
+            <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(0,0,0,0.1);">
+                <p style="color: #888; font-size: 0.9rem;">
+                    Still lost? <a href="contact.html"
+                        style="color: var(--primary-green); text-decoration: none; font-weight: 600;">Contact us</a>
+                    and we'll help you find your way!
+                </p>
+            </div>
+        </div>
+
+        <script>
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                });
+            }
+
+            function addRandomMovement() {
+                const cactuses = document.querySelectorAll('.cactus');
+                cactuses.forEach((cactus, index) => {
+                    setInterval(() => {
+                        const randomX = Math.random() * 20 - 10;
+                        const randomY = Math.random() * 20 - 10;
+                        cactus.style.transform = `translate(${randomX}px, ${randomY}px) rotate(${Math.random() * 6 - 3}deg)`;
+                    }, 5000 + index * 1000);
+                });
+            }
+
+            setTimeout(addRandomMovement, 2000);
+
+            const camel = document.querySelector('.camel-graphic');
+            let clickCount = 0;
+
+            camel.addEventListener('click', () => {
+                clickCount++;
+
+                if (clickCount === 1) {
+                    camel.style.transform = 'scale(1.2) rotate(10deg)';
+                    setTimeout(() => {
+                        camel.style.transform = 'scale(1) rotate(0deg)';
+                    }, 500);
+                } else if (clickCount === 3) {
+                    camel.innerHTML = '🐪💨';
+                    setTimeout(() => {
+                        camel.innerHTML = '🐪';
+                    }, 2000);
+                } else if (clickCount === 5) {
+                    document.body.style.animation = 'sandstorm 1s ease-in-out';
+                    setTimeout(() => {
+                        document.body.style.animation = '';
+                        clickCount = 0;
+                    }, 1000);
+                }
+            });
+
+            const style = document.createElement('style');
+            style.textContent = `
+            @keyframes sandstorm {
+                0%, 100% { filter: blur(0px) sepia(0); }
+                50% { filter: blur(2px) sepia(0.3); }
+            }
+        `;
+            document.head.appendChild(style);
+        </script>
+</body>
+
+</html>
